@@ -15,7 +15,7 @@
 	<description>Spring Boot application that reminds of birthdays</description>
 
 	<properties>
-		<java.version>11</java.version>
+		<java.version>8</java.version>
 	</properties>
 
 	<dependencies>
