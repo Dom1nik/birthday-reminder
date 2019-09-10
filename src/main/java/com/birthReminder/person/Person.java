@@ -1,17 +1,11 @@
 package com.birthReminder.person;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
+import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
-
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
-import javax.validation.constraints.NotNull;
-
-import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
 @Table(name = "person")
@@ -21,11 +15,11 @@ public class Person {
 		// Default constructor
 	}
 
-	public Person(String firstName, String lastName, LocalDate dateOfBirth, LocalDateTime timestamp) {
+	public Person(String firstName, String lastName, LocalDate birthDate, LocalDateTime timestamp) {
 		super();
 		this.firstName = firstName;
 		this.lastName = lastName;
-		this.dateOfBirth = dateOfBirth;
+		this.birthDate = birthDate;
 		this.timestamp = timestamp;
 	}
 
@@ -44,15 +38,11 @@ public class Person {
 	@Column(nullable = false)
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	@NotNull(message = "Please fill in this information")
-	private LocalDate dateOfBirth;
+	private LocalDate birthDate;
 
 	@Column(nullable = false)
 	@DateTimeFormat(pattern = "yyyy-MM-ddTHH:mm:ss")
 	private LocalDateTime timestamp;
-
-	public void setId(Long id) {
-		this.id = id;
-	}
 
 	public Long getId() {
 		return id;
@@ -74,12 +64,12 @@ public class Person {
 		return lastName;
 	}
 
-	public void setDateOfBirth(LocalDate dateOfBirth) {
-		this.dateOfBirth = dateOfBirth;
+	public void setBirthDate(LocalDate birthDate) {
+		this.birthDate = birthDate;
 	}
 
-	public LocalDate getDateOfBirth() {
-		return dateOfBirth;
+	public LocalDate getBirthDate() {
+		return birthDate;
 	}
 
 	public void setTimestamp(LocalDateTime timestamp) {
@@ -96,7 +86,7 @@ public class Person {
 				"id=" + id +
 				", firstName='" + firstName + '\'' +
 				", lastName='" + lastName + '\'' +
-				", dateOfBirth=" + dateOfBirth +
+				", birthDate=" + birthDate +
 				", timestamp=" + timestamp +
 				'}';
 	}

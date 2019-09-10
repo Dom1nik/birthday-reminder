@@ -1,10 +1,59 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Parallax Template - Materialize</title>
+
+    <!-- CSS  -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <!-- <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection" /> -->
 </head>
+
 <body>
-    <p>PERSON ENTRY FORM</p>
+<h2 class="center" style="margin-bottom: 4.0rem">Enter new birthday</h2>
+<div class="row">
+    <form action="#" th:action="@{/submit}" th:object="${person}" class="col s6 offset-s3" method="post">
+        <div class="row">
+            <div class="input-field col s6">
+                <input id="first_name" type="text" th:field="*{firstName}" class="validate">
+                <label for="first_name">First Name</label>
+            </div>
+            <div class="input-field col s6">
+                <input id="last_name" type="text" th:field="*{lastName}" class="validate">
+                <label for="last_name">Last Name</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s12">
+                <!--<input id="birthDate" type="text" th:field="*{birthDate}" class="datepicker">-->
+                <input id="birthDate" type="date" th:field="*{birthDate}">
+                <label for="birthDate">Birth date</label>
+            </div>
+        </div>
+        <div class="row center">
+            <button class="btn waves-effect waves-light" value="Submit">Submit
+                <i class="material-icons right">send</i>
+            </button>
+        </div>
+    </form>
+</div>
+
+<footer class="page-footer teal">
+    <div class="footer-copyright">
+        <div class="container">
+            Made by <a class="brown-text text-lighten-3" href="http://dominik.bezevan.com">Dominik Beževan</a>
+        </div>
+    </div>
+</footer>
+
+<!--  Scripts-->
+<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+<script src="js/init.js"></script>
+
 </body>
+
 </html>
