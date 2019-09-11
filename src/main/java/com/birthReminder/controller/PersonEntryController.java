@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import java.time.LocalDateTime;
 import java.time.ZoneId;
+import java.util.Iterator;
 
 @Controller
 public class PersonEntryController {
@@ -24,7 +25,7 @@ public class PersonEntryController {
     @GetMapping("/")
     public String getPersonEntryForm(Model model) {
         model.addAttribute("person", new Person());
-        return "personEntryForm";
+        return "PersonEntryForm";
     }
 
     @PostMapping("/submit")
@@ -39,4 +40,12 @@ public class PersonEntryController {
         personRepository.deleteById(personId);
         return new ResponseEntity<String>(personId.toString() + " deleted", HttpStatus.OK);
     }
+
+    @GetMapping("/listAll")
+    public String listAll(Model model) {
+        Iterable<Person> listt = personRepository.findAll();
+        model.addAttribute("persons", listt);
+        return "personsList";
+    }
+
 }
