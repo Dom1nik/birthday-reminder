@@ -13,14 +13,15 @@
 </head>
 
 <body>
-<h2 class="center" style="margin-bottom: 4.0rem">All persons </h2>
-<div class="row">
+<h2 class="center" style="margin-bottom: 4.0rem">All persons</h2>
+<div class="row" th:if="${person!=null and !person.empty}">
     <table>
         <thead>
             <tr>
                 <th>Ime</th>
                 <th>Prezime</th>
                 <th>Datum rođenja</th>
+                <th>Delete</th>>
             </tr>
         </thead>
         <tbody>
@@ -28,9 +29,13 @@
                 <td th:text="${person.firstName}"/>
                 <td th:text="${person.lastName}"/>
                 <td th:text="${person.birthDate}"/>
+                <td><a class="btn-floating" th:href="@{delete(id=${person.id})}" ><i class="material-icons">remove_circle</i></a></td>
             </tr>
         </tbody>
     </table>
+</div>
+<div class="row" th:unless="${person!=null and !person.empty}">
+    <h4 class="center">No birthdays inserted yet.</h4>
 </div>
 
 <footer class="page-footer teal">

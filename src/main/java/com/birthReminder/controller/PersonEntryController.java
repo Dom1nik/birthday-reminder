@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import java.time.LocalDateTime;
 import java.time.ZoneId;
-import java.util.Iterator;
 
 @Controller
 public class PersonEntryController {
