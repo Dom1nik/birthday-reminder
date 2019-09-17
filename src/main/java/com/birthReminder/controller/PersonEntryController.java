@@ -35,9 +35,9 @@ public class PersonEntryController {
     }
 
     @GetMapping("/delete")
-    public ResponseEntity<String> deletePerson(@RequestParam("id") Long personId) {
+    public String deletePerson(@RequestParam("id") Long personId) {
         personRepository.deleteById(personId);
-        return new ResponseEntity<String>(personId.toString() + " deleted", HttpStatus.OK);
+        return "redirect:/listAll";
     }
 
     @GetMapping("/listAll")
