@@ -18,12 +18,14 @@
     <form action="#" th:action="@{/submit}" th:object="${person}" class="col s6 offset-s3" method="post">
         <div class="row">
             <div class="input-field col s6">
-                <input id="first_name" type="text" th:field="*{firstName}" class="validate">
+                <input id="first_name" type="text" th:field="*{firstName}" th:maxlength="25" class="validate">
                 <label for="first_name">First Name</label>
+                <td th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}">First name error</td>
             </div>
             <div class="input-field col s6">
-                <input id="last_name" type="text" th:field="*{lastName}" class="validate">
+                <input id="last_name" type="text" th:field="*{lastName}" th:maxlength="25" class="validate">
                 <label for="last_name">Last Name</label>
+                <td th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}">Last name error</td>
             </div>
         </div>
         <div class="row">
@@ -31,6 +33,7 @@
                 <!--<input id="birthDate" type="text" th:field="*{birthDate}" class="datepicker">-->
                 <input id="birthDate" type="date" th:field="*{birthDate}">
                 <label for="birthDate">Birth date</label>
+                <td th:if="${#fields.hasErrors('birthDate')}" th:errors="*{birthDate}">Birth date error</td>
             </div>
         </div>
         <div class="row center">

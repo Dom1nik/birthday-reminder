@@ -3,6 +3,7 @@ package com.birthReminder.person;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -28,16 +29,18 @@ public class Person {
 	private Long id;
 
 	@Column(nullable = false, length = 20)
-	@NotNull(message = "Please fill in this information")
+	@NotNull(message = "please fill in this information")
+	@Min(25)
 	private String firstName;
 
 	@Column(nullable = false, length = 20)
-	@NotNull(message = "Please fill in this information")
+	@NotNull(message = "please fill in this information")
+	@Min(25)
 	private String lastName;
 
 	@Column(nullable = false)
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
-	@NotNull(message = "Please fill in this information")
+	@NotNull(message = "please fill in this information")
 	private LocalDate birthDate;
 
 	@Column(nullable = false)
