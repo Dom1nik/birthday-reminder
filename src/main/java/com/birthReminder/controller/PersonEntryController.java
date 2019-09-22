@@ -25,8 +25,9 @@ public class PersonEntryController {
     @Autowired
     PersonRepository personRepository;
 
-    @GetMapping("/")
+    @GetMapping(value = {"/", "new"})
     public String getPersonEntryForm(Model model) {
+        if (1 == 1) throw new IllegalArgumentException();
         LOG.info("Loading new person entry form");
         model.addAttribute("person", new Person());
         return "PersonEntryForm";
@@ -34,7 +35,7 @@ public class PersonEntryController {
 
     @PostMapping("/submit")
     public String createPerson(@Valid @ModelAttribute Person person, BindingResult result, Model model) {
-        if (result.hasErrors()){
+        if (result.hasErrors()) {
             return "PersonEntryForm";
         }
         LOG.info("Saving new person");
