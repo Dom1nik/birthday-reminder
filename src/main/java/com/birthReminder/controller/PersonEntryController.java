@@ -27,7 +27,6 @@ public class PersonEntryController {
 
     @GetMapping(value = {"/", "new"})
     public String getPersonEntryForm(Model model) {
-        if (1 == 1) throw new IllegalArgumentException();
         LOG.info("Loading new person entry form");
         model.addAttribute("person", new Person());
         return "PersonEntryForm";
