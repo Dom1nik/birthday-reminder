@@ -1,10 +1,11 @@
 package com.birthReminder.person;
 
+import org.hibernate.validator.constraints.Length;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
-import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
@@ -12,89 +13,91 @@ import java.time.LocalDateTime;
 @Table(name = "person")
 public class Person {
 
-	public Person() {
-		// Default constructor
-	}
+    public Person() {
+        // Default constructor
+    }
 
-	public Person(String firstName, String lastName, LocalDate birthDate, LocalDateTime timestamp) {
-		super();
-		this.firstName = firstName;
-		this.lastName = lastName;
-		this.birthDate = birthDate;
-		this.timestamp = timestamp;
-	}
+    public Person(String firstName, String lastName, LocalDate birthDate, LocalDateTime timestamp) {
+        super();
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.birthDate = birthDate;
+        this.timestamp = timestamp;
+    }
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Long id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
 
-	@Column(nullable = false, length = 20)
-	@NotNull(message = "please fill in this information")
-	@Min(25)
-	private String firstName;
+    @Column(nullable = false, length = 20)
+    @NotNull(message = "please fill in this information")
+    @Pattern(regexp = "^[a-zA-Z\\s]+$", message = "first name must not contain numbers")
+    @Length(min = 1, max = 25)
+    private String firstName;
 
-	@Column(nullable = false, length = 20)
-	@NotNull(message = "please fill in this information")
-	@Min(25)
-	private String lastName;
+    @Column(nullable = false, length = 20)
+    @NotNull(message = "please fill in this information")
+    @Pattern(regexp = "^[a-zA-Z\\s]+$", message = "last name must not contain numbers")
+    @Length(min = 1, max = 25)
+    private String lastName;
 
-	@Column(nullable = false)
-	@DateTimeFormat(pattern = "yyyy-MM-dd")
-	@NotNull(message = "please fill in this information")
-	private LocalDate birthDate;
+    @Column(nullable = false)
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @NotNull(message = "please fill in this information")
+    private LocalDate birthDate;
 
-	@Column(nullable = false)
-	@DateTimeFormat(pattern = "yyyy-MM-ddTHH:mm:ss")
-	private LocalDateTime timestamp;
+    @Column(nullable = false)
+    @DateTimeFormat(pattern = "yyyy-MM-ddTHH:mm:ss")
+    private LocalDateTime timestamp;
 
-	public Long getId() {
-		return id;
-	}
+    public Long getId() {
+        return id;
+    }
 
-	public void setId(Long id) {
-		this.id = id;
-	}
+    public void setId(Long id) {
+        this.id = id;
+    }
 
-	public void setFirstName(String firstName) {
-		this.firstName = firstName;
-	}
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
 
-	public String getFirstName() {
-		return firstName;
-	}
+    public String getFirstName() {
+        return firstName;
+    }
 
-	public void setLastName(String lastName) {
-		this.lastName = lastName;
-	}
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
 
-	public String getLastName() {
-		return lastName;
-	}
+    public String getLastName() {
+        return lastName;
+    }
 
-	public void setBirthDate(LocalDate birthDate) {
-		this.birthDate = birthDate;
-	}
+    public void setBirthDate(LocalDate birthDate) {
+        this.birthDate = birthDate;
+    }
 
-	public LocalDate getBirthDate() {
-		return birthDate;
-	}
+    public LocalDate getBirthDate() {
+        return birthDate;
+    }
 
-	public void setTimestamp(LocalDateTime timestamp) {
-		this.timestamp = timestamp;
-	}
+    public void setTimestamp(LocalDateTime timestamp) {
+        this.timestamp = timestamp;
+    }
 
-	public LocalDateTime getTimestamp() {
-		return timestamp;
-	}
+    public LocalDateTime getTimestamp() {
+        return timestamp;
+    }
 
-	@Override
-	public String toString() {
-		return "Person{" +
-				"id=" + id +
-				", firstName='" + firstName + '\'' +
-				", lastName='" + lastName + '\'' +
-				", birthDate=" + birthDate +
-				", timestamp=" + timestamp +
-				'}';
-	}
+    @Override
+    public String toString() {
+        return "Person{" +
+                "id=" + id +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", birthDate=" + birthDate +
+                ", timestamp=" + timestamp +
+                '}';
+    }
 }
