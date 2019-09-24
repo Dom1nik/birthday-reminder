@@ -1,7 +1,9 @@
 package com.birthReminder.controller;
 
+import com.birthReminder.person.Form;
 import com.birthReminder.person.Person;
 import com.birthReminder.person.PersonRepository;
+import org.modelmapper.ModelMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,23 +27,35 @@ public class PersonEntryController {
     @Autowired
     PersonRepository personRepository;
 
-    @GetMapping(value = {"/", "new"})
+    @Autowired
+    ModelMapper modelmapper;
+
+    @GetMapping(value = {"/"})
     public String getPersonEntryForm(Model model) {
+        LOG.info("Loading person entry form");
+        model.addAttribute("form", new Form());
+        return "PersonEntryForm";
+    }
+
+    @GetMapping(value = {"/new"})
+    public String getNewPersonEntryForm(Model model) {
         LOG.info("Loading new person entry form");
-        model.addAttribute("person", new Person());
+        model.addAttribute("form", new Form(true));
         return "PersonEntryForm";
     }
 
     @PostMapping("/submit")
-    public String createPerson(@Valid @ModelAttribute Person person, BindingResult result, Model model) {
+    public String createPerson(@Valid @ModelAttribute Form form, BindingResult result, Model model) {
         if (result.hasErrors()) {
+            form.setUserSaved(false);
+            model.addAttribute("form", form);
             return "PersonEntryForm";
         }
         LOG.info("Saving new person");
+        Person person = modelmapper.map(form, Person.class);
         person.setTimestamp(LocalDateTime.now(ZoneId.of("Europe/Zagreb")));
         personRepository.save(person).toString();
-        model.addAttribute("person", new Person());
-        return "redirect:/";
+        return "redirect:/new";
     }
 
     @GetMapping("/delete")

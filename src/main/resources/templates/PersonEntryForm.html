@@ -15,7 +15,8 @@
 <body>
 <h2 class="center" style="margin-bottom: 4.0rem">Enter new birthday</h2>
 <div class="row">
-    <form action="#" th:action="@{/submit}" th:object="${person}" class="col s6 offset-s3" method="post">
+    <form action="#" th:action="@{/submit}" th:object="${form}" class="col s6 offset-s3" method="post">
+        <div class="row center" th:if="*{userSaved}"><h3>Birthday saved!</h3></div>
         <div class="row">
             <div class="input-field col s6">
                 <input id="first_name" type="text" th:field="*{firstName}" class="validate">
