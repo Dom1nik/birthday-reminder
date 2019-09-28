@@ -26,7 +26,7 @@ public class Form {
     private Boolean userSaved;
 
     public Form() {
-        // Default constructor;
+        // Default constructor
     }
 
     public Form(Boolean userSaved) {

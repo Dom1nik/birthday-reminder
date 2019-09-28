@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <title>Birthday reminder web app</title>
+
+    <!-- CSS  -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <!-- <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection" /> -->
+</head>
+
+<body>
+<h2 class="center" style="margin-bottom: 4.0rem">Settings</h2>
+<div class="row">
+    <form action="#" th:action="@{/submit}" th:object="${settings}" class="col s6 offset-s3" method="post">
+        <!--<div class="row center" th:if="*{userSaved}"><h3>Birthday saved!</h3></div>-->
+        <div class="switch row center">
+            <label for="viber_notification_option">Turn on viber notification</label>
+            <label>
+                Off
+                <input id="viber_notification_option" type="checkbox" th:field="*{optionSendViberNotification}">
+                <span class="lever"></span>
+                On
+            </label>
+        </div>
+        <div class="switch row center">
+            <label for="email_notification_option">Turn on viber notification</label>
+            <label>
+                Off
+                <input id="email_notification_option" type="checkbox" th:field="*{optionSendEmailNotification}">
+                <span class="lever"></span>
+                On
+            </label>
+        </div>
+        <div class="row center">
+            <button class="btn waves-effect waves-light" style="margin-top: 4.0rem" value="Submit">Save
+                <i class="material-icons right">done</i>
+            </button>
+        </div>
+    </form>
+</div>
+
+<footer class="page-footer teal">
+    <div class="footer-copyright">
+        <div class="container">
+            Made by <a class="brown-text text-lighten-3" href="http://dominik.bezevan.com">Dominik Beževan</a>
+        </div>
+    </div>
+</footer>
+
+<!--  Scripts-->
+<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+<script src="js/init.js"></script>
+
+</body>
+
+</html>

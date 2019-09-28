@@ -3,6 +3,7 @@ package com.birthReminder.controller;
 import com.birthReminder.person.Form;
 import com.birthReminder.person.Person;
 import com.birthReminder.person.PersonRepository;
+import com.birthReminder.person.Settings;
 import org.modelmapper.ModelMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -38,7 +39,7 @@ public class PersonEntryController {
     }
 
     @GetMapping(value = {"/new"})
-    public String getNewPersonEntryForm(Model model) {
+    public String showNewPersonEntryForm(Model model) {
         LOG.info("Loading new person entry form");
         model.addAttribute("form", new Form(true));
         return "PersonEntryForm";
@@ -66,11 +67,16 @@ public class PersonEntryController {
     }
 
     @GetMapping("/listAll")
-    public String listAll(Model model) {
+    public String showAll(Model model) {
         LOG.info("Listing all saved entries");
-        Iterable<Person> listt = personRepository.findAll();
-        model.addAttribute("persons", listt);
-        return "personsList";
+        Iterable<Person> personsList = personRepository.findAll();
+        model.addAttribute("persons", personsList);
+        return "PersonsList";
     }
 
+    @GetMapping("/settings")
+    public String showSettings(Model model) {
+        model.addAttribute("settings", new Settings());
+        return "Settings";
+    }
 }

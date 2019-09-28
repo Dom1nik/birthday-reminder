@@ -4,7 +4,7 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Birtday reminder web app</title>
+    <title>Birthday reminder web app</title>
 
     <!-- CSS  -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -13,6 +13,11 @@
 </head>
 
 <body>
+<div class="row right" style="margin-right: 4.0rem">
+    <a class="btn waves-effect light-blue accent-3" th:href="@{/settings}">Settings
+        <i class="material-icons right">settings</i>
+    </a>
+</div>
 <h2 class="center" style="margin-bottom: 4.0rem">Enter new birthday</h2>
 <div class="row">
     <form action="#" th:action="@{/submit}" th:object="${form}" class="col s6 offset-s3" method="post">
