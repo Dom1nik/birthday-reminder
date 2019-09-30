@@ -2,8 +2,8 @@
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
 
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <title>Birthday reminder web app</title>
 
     <!-- CSS  -->
@@ -12,13 +12,19 @@
     <!-- <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection" /> -->
 </head>
 
-<body>
-<div class="row right" style="margin-right: 4.0rem">
-    <a class="btn waves-effect light-blue accent-3" th:href="@{/settings}">Settings
-        <i class="material-icons right">settings</i>
-    </a>
+<div class="row">
+    <div class="col s2 offset-s10 right">
+        <a class="btn waves-effect light-blue accent-3" style="margin-top: 2.0rem" th:href="@{/settings}">Settings
+            <i class="material-icons right">settings</i>
+        </a>
+    </div>
 </div>
-<h2 class="center" style="margin-bottom: 4.0rem">Enter new birthday</h2>
+    <div class="row">
+        <div class="col s6 offset-s3 center">
+            <h2 style="margin-bottom: 4.0rem; margin-top: 0" th:text="#{form.title}">Enter new birthday</h2>
+        </div>
+    </div>
+</div>
 <div class="row">
     <form action="#" th:action="@{/submit}" th:object="${form}" class="col s6 offset-s3" method="post">
         <div class="row center" th:if="*{userSaved}"><h3>Birthday saved!</h3></div>
@@ -43,7 +49,7 @@
             </div>
         </div>
         <div class="row center">
-            <button class="btn waves-effect waves-light" value="Submit">Submit
+            <button class="btn waves-effect waves-light" value="Submit">Save
                 <i class="material-icons right">send</i>
             </button>
             <a class="btn waves-effect waves-light" th:href="@{/listAll}">Manage entries

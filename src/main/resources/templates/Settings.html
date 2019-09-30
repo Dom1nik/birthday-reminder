@@ -18,7 +18,7 @@
     <form action="#" th:action="@{/submit}" th:object="${settings}" class="col s6 offset-s3" method="post">
         <!--<div class="row center" th:if="*{userSaved}"><h3>Birthday saved!</h3></div>-->
         <div class="switch row center">
-            <label for="viber_notification_option">Turn on viber notification</label>
+            <label for="viber_notification_option">Turn on Viber notification</label>
             <label>
                 Off
                 <input id="viber_notification_option" type="checkbox" th:field="*{optionSendViberNotification}">
@@ -27,7 +27,7 @@
             </label>
         </div>
         <div class="switch row center">
-            <label for="email_notification_option">Turn on viber notification</label>
+            <label for="email_notification_option">Turn on E-mail notification</label>
             <label>
                 Off
                 <input id="email_notification_option" type="checkbox" th:field="*{optionSendEmailNotification}">
