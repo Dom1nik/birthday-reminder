@@ -4,7 +4,7 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
-    <title>Birthday reminder web app</title>
+    <title th:text="#{app.title}">Birthday reminder web app</title>
 
     <!-- CSS  -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -14,7 +14,7 @@
 
 <div class="row">
     <div class="col s2 offset-s10 right">
-        <a class="btn waves-effect light-blue accent-3" style="margin-top: 2.0rem" th:href="@{/settings}">Settings
+        <a class="btn waves-effect light-blue accent-3" style="margin-top: 2.0rem" th:href="@{/settings}" th:text="#{settings.button}">Settings
             <i class="material-icons right">settings</i>
         </a>
     </div>
@@ -31,12 +31,12 @@
         <div class="row">
             <div class="input-field col s6">
                 <input id="first_name" type="text" th:field="*{firstName}" class="validate">
-                <label for="first_name">First Name</label>
+                <label for="first_name" th:text="#{form.label.firstName}">First Name</label>
                 <td th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}">First name error</td>
             </div>
             <div class="input-field col s6">
                 <input id="last_name" type="text" th:field="*{lastName}" class="validate">
-                <label for="last_name">Last Name</label>
+                <label for="last_name" th:text="#{form.label.lastName}">Last Name</label>
                 <td th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}">Last name error</td>
             </div>
         </div>
@@ -44,15 +44,15 @@
             <div class="input-field col s12">
                 <!--<input id="birthDate" type="text" th:field="*{birthDate}" class="datepicker">-->
                 <input id="birthDate" type="text" class="datepicker" th:field="*{{birthDate}}">
-                <label for="birthDate">Birth date</label>
+                <label for="birthDate" th:text="#{form.label.birthDate}">Birth date</label>
                 <td th:if="${#fields.hasErrors('birthDate')}" th:errors="*{birthDate}">Birth date error</td>
             </div>
         </div>
         <div class="row center">
-            <button class="btn waves-effect waves-light" value="Submit">Save
+            <button class="btn waves-effect waves-light" value="Submit" th:text="#{form.button.submit}">Save
                 <i class="material-icons right">send</i>
             </button>
-            <a class="btn waves-effect waves-light" th:href="@{/listAll}">Manage entries
+            <a class="btn waves-effect waves-light" th:href="@{/listAll}" th:text="#{entries.button.navigate}">Manage entries
                 <i class="material-icons right">list</i>
             </a>
         </div>

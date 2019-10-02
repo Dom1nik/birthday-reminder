@@ -4,7 +4,7 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Birthday reminder web app</title>
+    <title th:text="#{app.title}">Birthday reminder web app</title>
 
     <!-- CSS  -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -13,9 +13,9 @@
 </head>
 
 <body>
-<h2 class="center" style="margin-top: 6.0rem">Oops! Error happened.</h2>
+<h2 class="center" style="margin-top: 6.0rem" th:text="#{error.message}">Oops! Error happened.</h2>
 <div class="row center">
-    <a class="btn waves-effect waves-light" style="margin-top: 2.0rem" th:href="@{/new}">Return
+    <a class="btn waves-effect waves-light" style="margin-top: 2.0rem" th:href="@{/new}" th:text="#{errors.button.return}>Return
         <i class="material-icons right">keyboard_return</i>
     </a>
 </div>

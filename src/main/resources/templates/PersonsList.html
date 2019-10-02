@@ -4,7 +4,7 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
-    <title>Birthday reminder web app</title>
+    <title th:text="#{app.title}">Birthday reminder web app</title>
 
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
@@ -12,15 +12,15 @@
 </head>
 
 <body>
-<h2 class="center" style="margin-bottom: 4.0rem">All persons</h2>
+<h2 class="center" style="margin-bottom: 4.0rem" th:text="#{entries.title}">All persons</h2>
 <div class="row" th:if="${persons!=null and !persons.empty}">
     <table>
         <thead>
         <!--<tr>-->
-        <th>First name</th>
-        <th>Last name</th>
-        <th>Birth date</th>
-        <th>Delete</th>
+        <th th:text="#{entries.label.firstName}">First name</th>
+        <th th:text="#{entries.label.lastName}">Last name</th>
+        <th th:text="#{entries.label.birthDate}">Birth date</th>
+        <th th:text="#{entries.button.delete}">Delete</th>
         </tr>
         </thead>
         <tbody>
@@ -35,10 +35,10 @@
     </table>
 </div>
 <div class="row" th:unless="${persons!=null and !persons.empty}">
-    <h4 class="center">No birthdays inserted yet.</h4>
+    <h4 class="center" th:text="#{entries.message.noentries}">No birthdays inserted yet.</h4>
 </div>
 <div class="row center">
-    <a th:href="@{/}" class="btn waves-effect waves-light">
+    <a th:href="@{/}" class="btn waves-effect waves-light" th:text="#{form.button.navigate}">
         Enter new user
     </a>
 </div>
