@@ -20,16 +20,14 @@
         <div class="switch row center">
             <label for="viber_notification_option" th:text="#{settings.label.viber}">Turn on Viber notification</label>
             <label>
-                Off
-                <input id="viber_notification_option" type="checkbox" th:field="*{optionSendViberNotification}">
+                <input id="viber_notification_option" type="checkbox" th:checked="*{optionSendViberNotification}">
                 <span class="lever"></span>
-                On
             </label>
         </div>
         <div class="switch row center">
             <label for="email_notification_option" th:text="#{settings.label.email}">Turn on E-mail notification</label>
             <label>
-                <input id="email_notification_option" type="checkbox" th:field="*{optionSendEmailNotification}">
+                <input id="email_notification_option" type="checkbox" th:checked="*{optionSendEmailNotification}">
                 <span class="lever"></span>
             </label>
         </div>
