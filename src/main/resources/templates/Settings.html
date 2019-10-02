@@ -17,22 +17,36 @@
 <div class="row">
     <form action="#" th:action="@{/submit}" th:object="${settings}" class="col s6 offset-s3" method="post">
         <!--<div class="row center" th:if="*{userSaved}"><h3>Birthday saved!</h3></div>-->
-        <div class="switch row center">
-            <label for="viber_notification_option" th:text="#{settings.label.viber}">Turn on Viber notification</label>
-            <label>
-                <input id="viber_notification_option" type="checkbox" th:checked="*{optionSendViberNotification}">
-                <span class="lever"></span>
-            </label>
+        <div class="switch row">
+            <div class="col s3 offset-s4">
+                <label for="viber_notification_option" th:text="#{settings.label.viber}">
+                    Turn on Viber notification
+                </label>
+            </div>
+            <div class="col s1">
+                <label>
+                    <input id="viber_notification_option" type="checkbox" th:checked="*{optionSendViberNotification}">
+                    <span class="lever"></span>
+                </label>
+            </div>
         </div>
-        <div class="switch row center">
-            <label for="email_notification_option" th:text="#{settings.label.email}">Turn on E-mail notification</label>
-            <label>
-                <input id="email_notification_option" type="checkbox" th:checked="*{optionSendEmailNotification}">
-                <span class="lever"></span>
-            </label>
+        <div class="switch row">
+            <div class="col s3 offset-s4">
+                <label for="email_notification_option" th:text="#{settings.label.email}">
+                    Turn on E-mail notification
+                </label>
+            </div>
+            <div class="col s1">
+                <label>
+                    <input id="email_notification_option" type="checkbox" th:checked="*{optionSendEmailNotification}">
+                    <span class="lever"></span>
+                </label>
+            </div>
+
         </div>
         <div class="row center">
-            <button class="btn waves-effect waves-light" style="margin-top: 4.0rem" th:text="#{settings.button.submit}" value="Submit">Save
+            <button class="btn waves-effect waves-light" style="margin-top: 4.0rem" th:text="#{settings.button.submit}"
+                    value="Submit">Save
                 <i class="material-icons right">done</i>
             </button>
         </div>
